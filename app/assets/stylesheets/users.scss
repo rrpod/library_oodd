@@ -1,3 +1,9 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form-signin #session_first_name,
+.form-signin #session_last_name {
+  direction: ltr;
+  height: 44px;
+  font-size: 16px;
+}

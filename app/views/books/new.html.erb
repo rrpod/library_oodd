@@ -1,0 +1,18 @@
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
+<div class="container">
+  <div class="card card-container">
+    <%= form_for(:book, url: '/newbook', :html => {:class => "form-signin"}) do |f| %>
+        <%= f.text_field :isbn, :placeholder => 'ISBN', :class => "form-control" %>
+        <%= f.text_field :title, :placeholder => 'Title' , :class => "form-control"%>
+        <%= f.text_field :author, :placeholder => 'Author' , :class => "form-control" %>
+        <%= f.text_area :description, :placeholder => 'Description', :class => "form-control" %>
+        <%= f.submit "Add Book", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
+    <% end %>
+  </div>
+</div>

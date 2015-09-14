@@ -1,0 +1,31 @@
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
+
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<div class="container">
+  <div class="card card-container">
+    <div class="form-group">
+        <%= form_for(@book, :html => {:class => "form-signin"}) do |f| %>
+            <%= f.text_field :isbn , :placeholder => 'ISBN', :class => "form-control" %>
+            <%= f.text_field :title, :placeholder => 'Title' , :class => "form-control"%>
+            <%= f.text_field :author, :placeholder => 'Author' , :class => "form-control" %>
+            <%= f.text_area :description, :placeholder => 'Description', :class => "form-control" %>
+            <div class="dropdown">
+              <div class="form-group">
+                <%= f.collection_select :status, Book::STATUS, :to_s, :to_s, :status =>true ,:html => {:class => "form-control"}%>
+              </div>
+            </div>
+            <%= f.submit "Update Book", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
+        <% end %>
+  </div>
+</div>

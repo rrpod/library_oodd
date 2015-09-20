@@ -2,5 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Rails library: development" uuid="cb7c71e0-0e97-41cf-9f05-251760e1bc95" />
+    <data-source name="SQLite -" uuid="9103eb18-6281-418c-a1ef-6f9e629b8f77">
+      <secret-storage>master_key</secret-storage>
+    </data-source>
   </component>
 </project>

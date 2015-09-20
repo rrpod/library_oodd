@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def show_users
+  def index
       @user = User.all
   end
   

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'newbook' => 'books#new'
   post 'newbook' => 'books#create'
   get 'books' => 'books#index'
+
   resources :users
   resources :books
   # You can have the root of your site routed with "root"

@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     end
   end
   
+  
   def destroy
       @user = User.find(params[:id])
       if current_user?(@user)

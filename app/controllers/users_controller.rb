@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  
+  def show_users
+      @user = User.all
+  end
+  
   def create
     user = User.find_by_email(params[:user][:email])
     if user
@@ -18,7 +22,18 @@ class UsersController < ApplicationController
       redirect_to signup_url
     end
   end
-
+  
+  def destroy
+      @user = User.find(params[:id])
+      if current_user?(@user)
+          redirect_to '/', notice: "You can't destroy yourself."
+          else
+          @user.destroy
+          flash[:success] = "User destroyed."
+          redirect_to '/'
+      end
+  end
+  
   private
 
   def user_params

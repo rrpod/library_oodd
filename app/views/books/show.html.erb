@@ -1,0 +1,49 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<div class="container">
+  <h2>Book Details</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        <% if current_user %>
+            <th>Status</th>
+        <%end%>
+        <% if current_user && current_user.admin? %>
+            <th>Current Owner</th>
+            <th>Edit Details</th>
+        <%end%>
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr>
+        <td style="word-wrap: break-word"><%= @book.isbn %></td>
+        <td style="word-wrap: break-word"><%= @book.title %></td>
+        <td style="word-wrap: break-word"><%= @book.author %></td>
+        <td style="word-wrap: break-word"><%= @book.description %></td>
+        <% if current_user %>
+            <td style="word-wrap: break-word"><%= @book.status %></td>
+        <%end%>
+        <% if current_user && current_user.admin? %>
+            <td style="word-wrap: break-word"><%= @book.current_owner %></td>
+            <td style="word-wrap: break-word">
+              <%= link_to 'Edit', edit_book_path(@book.isbn) %>
+              <%= link_to 'Delete', @book, method: 'delete', data: { confirm: 'Are you sure?'}
+              %>
+            </td>
+        <%end%>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

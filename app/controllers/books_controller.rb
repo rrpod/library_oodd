@@ -30,15 +30,22 @@ class BooksController < ApplicationController
   end
 
   def update
-    if @book.update(book_params)
-      flash[:notice] = "Book status updated successfully"
-    else
-      flash[:warn] = "Could not update Book status"
+    @book = Book.find(params[:id])
+    if @book
+      if @book.update(book_params)
+        flash[:notice] = "Book status updated successfully"
+      else
+        flash[:warn] = "Could not update Book status"
+      end
+      redirect_to books_url
     end
   end
 
+  def show
+    @book = Book.find(params[:id])
+  end
   def destroy
-
+    @book = Book.find(params[:id])
   end
   private
 

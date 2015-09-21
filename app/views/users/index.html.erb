@@ -1,0 +1,42 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<div class="container">
+  <h2>List of Admins</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last name</th>
+        <th>Email ID</th>
+        <th>Role</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+            <tr>
+              <td style="word-wrap: break-word"><%= user.first_name %></td>
+              <td style="word-wrap: break-word"><%= user.last_name %></td>
+              <td style="word-wrap: break-word"><%= user.email %></td>
+              <td style="word-wrap: break-word"><%= user.role %></td>
+              <td style="word-wrap: break-word">
+                <% if current_user && current_user.email!=user.email %>
+                    <%= link_to 'Delete', user, method: 'delete', data: { confirm: 'Are you sure?'}
+                    %>
+                    <%else%>
+                <%='Delete not applicable'%>
+                    <%end%>
+                </td>
+
+            </tr>
+
+
+<% end%>
+      </tbody>
+    </table>
+  </div>
+</div>

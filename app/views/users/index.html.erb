@@ -14,10 +14,12 @@
 
         <%= link_to user.first_name, user %>
         <% if current_user && current_user.admin? %>
-        <%= link_to "delete", user, method: 'delete', data: { confirm: "You sure?" } %>
+          <%= link_to 'Details', user, method: 'show'%>
+          <%= link_to 'Delete', user , method: 'delete' , data: { confirm: "You sure?" } %>
         <% end %>
     </li>
     <% end %>
+
 </ul>
 </body>
 </html>

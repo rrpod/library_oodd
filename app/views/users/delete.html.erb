@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<%= link_to ("<< Back to list",{:action => 'index'})%>
+<div class="user delete">
+  <h2>Delete User</h2>
+  <%= form_tag({:controller => 'users', :action => 'destroy' , :id => @user.id}) do %>
+      <p> <%= @user.first_name %> </p>
+      <div>
+        <%= submit_tag("Delete User") %>
+      </div>
+  <% end %>
+</div>
+
+</body>
+</html>

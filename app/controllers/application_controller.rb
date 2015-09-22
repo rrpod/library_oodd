@@ -1,3 +1,4 @@
+require 'time'
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -19,4 +20,9 @@ class ApplicationController < ActionController::Base
   def require_admin
     redirect_to '/' unless current_user.admin?
   end
-end
+
+  def history_book(isbn)
+    current_time = Time.now.utc.iso8601
+    Checkouthistory.where(isbn: isbn, checkin: nil).update_all(checkin: current_time)
+  end
+  end

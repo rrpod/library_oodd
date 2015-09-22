@@ -26,13 +26,18 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.find_by_isbn(params["id"])
   end
 
   def update
-    @book = Book.find(params[:id])
+    book_isbn = params[:book][:isbn]
+    puts "ROHIGIGOGIGOGI" + book_isbn
+    @book = Book.find_by_isbn(book_isbn)
+
     if @book
+      puts "Reached here"
       if @book.update(book_params)
+        history_book(book_isbn)
         flash[:notice] = "Book status updated successfully"
       else
         flash[:warn] = "Could not update Book status"
@@ -44,6 +49,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
   end
+
   def destroy
     @book = Book.find(params[:id])
     if @book

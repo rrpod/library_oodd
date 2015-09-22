@@ -1,0 +1,11 @@
+
+<div class="user delete">
+  <h2>Delete User</h2>
+  <%= form_for({:controller => 'users', :action => 'destroy' , :id => @user.id}) do |f| %>
+      <p> <%= @user.first_name %> </p>
+      <div>
+        <%= submit_tag("Delete User") %>
+      </div>
+  <% end %>
+
+<%= link_to ("<< Back to list",{:action => 'index'})%>

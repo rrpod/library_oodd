@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   get 'checkouthistory/:id' => 'checkouthistory#show'
   get 'checkouthistory' => 'checkouthistory#index'
   get 'listadmins' => 'users#index'
-  get 'edit_book' => 'books#index'
+  #get 'edit_book' => 'books#index'
   get 'index_search' => 'books#index_search'
   get 'index_users' => 'users#index_users'
-  get 'delete_user' => 'users#destroy_user'
 
   resources :users
   resources :books

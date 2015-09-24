@@ -1,0 +1,34 @@
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
+
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<div class="container">
+  <div class="card card-container">
+    <div class="form-group">
+      <%= form_for(@user, :html => {:class => "form-signin"}) do |f| %>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, :placeholder => 'First Name', :class => "form-control",:required=>true %>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, :placeholder => 'Last Name' , :class => "form-control",:required=>true%>
+          <%= f.label :email %>
+          <%= f.email_field :email, :placeholder => 'Email' , :class => "form-control",:required=>true %>
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control',:required=>true %>
+          <%= f.label :password_confirmation, "Confirm Password" %>
+          <%= f.password_field :password_confirmation, class: 'form-control' ,:required=>true%>
+
+            <%= f.submit "Update Profile", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
+        <% end %>
+    </div>
+  </div>
+</div>

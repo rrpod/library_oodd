@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="DataSourceManagerImpl" format="xml" hash="2905085582">
-=======
   <component name="DataSourceManagerImpl" format="xml" hash="1076000346">
->>>>>>> d04f8affb3c6e7c219e4150b3d3dc029a8a6edb3
     <data-source source="LOCAL" name="Rails library: development" uuid="cb7c71e0-0e97-41cf-9f05-251760e1bc95">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
@@ -12,19 +8,12 @@
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
       <libraries>
         <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/sqlite-jdbc-3.8.9.jar</url>
-        </library>
-        <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xerial-sqlite-license.txt</url>
         </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/sqlite-jdbc-3.8.9.jar</url>
+        </library>
       </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="SQLite -" uuid="6c58b133-1eb6-4371-b0ba-9f7d024dd236">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:</jdbc-url>
-      <libraries />
     </data-source>
   </component>
 </project>

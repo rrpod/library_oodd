@@ -3,32 +3,49 @@
       <%= flash[:notice] %>
     </div>
 <% end %>
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
 
-<% if current_user && current_user.member? %>
 <div class="container">
-  <h2>List of Books Used</h2>
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>ISBN</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Description</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @books.each do |book| %>
-          <tr>
-            <td style="word-wrap: break-word"><%= book.isbn %></td>
-            <td style="word-wrap: break-word"><%= book.title %></td>
-            <td style="word-wrap: break-word"><%= book.author %></td>
-            <td style="word-wrap: break-word"><%= book.description %></td>
-            <td style="word-wrap: break-word"><%= book.status %></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
+  <% if current_user && current_user.admin?%>
+  <h4>Enter the email id of the user whose history you would like to view. </h4>
+  <%= form_for(:checkouthistory, url: '/checkouthistory', :html => { :method => 'GET' }) do |f| %>
+  <%= f.email_field :email_id,:required => true ,:placeholder => 'Enter emailid', :class => "form-control" %>
+
+      <%= f.submit "Search", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
+  <% end
+  end%>
+
+  <% if current_user && @books && @books.length!=0 %>
+  <div class="container">
+    <h2>Checkout History for the user </h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ISBN</th>
+          <th>Title</th>
+          <th>Checkin Time</th>
+          <th>Checkout Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |book| %>
+            <tr>
+              <td style="word-wrap: break-word"><%= book.isbn %></td>
+              <td style="word-wrap: break-word"><%= book.title %></td>
+              <td style="word-wrap: break-word"><%= book.checkin %></td>
+              <td style="word-wrap: break-word"><%= book.checkout %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <%end %>
 </div>
-<%end %>

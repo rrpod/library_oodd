@@ -32,6 +32,9 @@ Reference: http://getbootstrap.com/components/#navbar
 
         <li class="active"><%= link_to "List of Books", books_path %></a></li>
         <% if current_user
+        %>
+        <li><%= link_to "CheckOut History", checkouthistory_path %></a></li>
+        <%
              if current_user.admin?
         %>
                 <li><%= link_to "New Book", newbook_path %></a></li>
@@ -43,7 +46,8 @@ Reference: http://getbootstrap.com/components/#navbar
                     <li><%= link_to "View All Admins", listadmins_path %></a></li>
 
                   </ul>
-</li>
+
+                </li>
         <%
              end
            end

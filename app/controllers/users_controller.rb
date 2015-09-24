@@ -46,7 +46,11 @@ class UsersController < ApplicationController
       else
         flash[:warn] = "Could not update profile"
       end
-      redirect_to listadmins_url
+      if current_user && current_user.admin?
+        redirect_to listadmins_url
+      else
+        redirect_to root_url
+      end
     end
   end
 

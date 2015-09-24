@@ -21,7 +21,7 @@
           <%= f.label :last_name %>
           <%= f.text_field :last_name, :placeholder => 'Last Name' , :class => "form-control",:required=>true%>
           <%= f.label :email %>
-          <%= f.email_field :email, :placeholder => 'Email' , :class => "form-control",:required=>true %>
+          <%= f.email_field :email, :placeholder => 'Email' , :class => "form-control",:required=>true, :readonly =>true %>
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control',:required=>true %>
           <%= f.label :password_confirmation, "Confirm Password" %>

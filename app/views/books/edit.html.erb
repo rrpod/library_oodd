@@ -16,7 +16,7 @@
   <div class="card card-container">
     <div class="form-group">
         <%= form_for(@book, :html => {:class => "form-signin"}) do |f| %>
-            <%= f.text_field :isbn , :placeholder => 'ISBN', :class => "form-control" %>
+            <%= f.text_field :isbn , :placeholder => 'ISBN', :class => "form-control", :readonly => true %>
             <%= f.text_field :title, :placeholder => 'Title' , :class => "form-control"%>
             <%= f.text_field :author, :placeholder => 'Author' , :class => "form-control" %>
             <%= f.text_area :description, :placeholder => 'Description', :class => "form-control" %>

@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(version: 20150920175107) do
   end
 
   create_table "checkouthistories", force: :cascade do |t|
-    t.string "isbn"
-    t.string "email"
-    t.string "tester"
-    t.string "checkin"
-    t.string "checkout"
+    t.string   "isbn"
+    t.string   "email"
+    t.string   "checkin"
+    t.string   "checkout"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

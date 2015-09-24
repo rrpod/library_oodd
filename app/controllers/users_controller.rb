@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     @users = User.where(role: "admin")
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
   def create
     user = User.find_by_email(params[:user][:email])
     if user
@@ -16,10 +19,26 @@ class UsersController < ApplicationController
     end
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_url
+      if !current_user.admin?
+        session[:user_id] = @user.id
+        redirect_to root_url
+        end
+      redirect_to listadmins_url
     else
       redirect_to signup_url
+    end
+  end
+  def update
+    user_email = params[:user][:email]
+    @user = User.find_by_email(current_user.email)
+
+    if @user
+      if @user.update(user_params)
+        flash[:notice] = "profile updated successfully"
+      else
+        flash[:warn] = "Could not update profile"
+      end
+      redirect_to listadmins_url
     end
   end
   def destroy
@@ -31,7 +50,7 @@ class UsersController < ApplicationController
         flash[:warn] = "Could not delete Admin"
       end
     else
-      flash[:warn] = "Did not find Admin to delete"
+      flash[:warn] = "Could not find Admin to delete"
     end
     redirect_to users_url
   end

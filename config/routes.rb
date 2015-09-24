@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'checkouthistory/:id' => 'checkouthistory#show'
   get 'checkouthistory' => 'checkouthistory#index'
   get 'listadmins' => 'users#index'
+  #get 'editprofile' => 'users#edit'
+
   resources :users
   resources :books
   resources :checkouthistory

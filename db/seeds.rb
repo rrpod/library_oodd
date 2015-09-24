@@ -6,4 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 mateo = User.create(first_name: 'Mateo', last_name: 'Lazo', email: 'mateo@email.com', password: 'Mateo1', password_confirmation: 'Mateo1', role: 'admin')
-testHistory = Checkouthistory.create(isbn: 12, email: 'blah', checkout: '2011-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 12, email: 'rohitrp2003@gmail.com', checkout: '2011-07-28T23:14:04Z', checkin: '2011-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 12, email: 'rohitrp2003@gmail.com', checkout: '2011-07-28T23:14:04Z', checkin: '2011-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 12, email: 'rohitrp2003@gmail.com', checkout: '2011-07-28T23:14:04Z', checkin: '2011-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 13, email: 'rohitrp2003@gmail.com', checkout: '2011-07-28T23:14:04Z', checkin: '2011-07-28T23:14:04Z')
+books_add = Book.create(isbn: 13, title: 'sdfdsf', author: 'sdfsdf', description: 'dsfgfdg', status: 'available')
+

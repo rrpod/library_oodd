@@ -35,6 +35,13 @@ Reference: http://getbootstrap.com/components/#navbar
              if current_user.admin?
         %>
                 <li><%= link_to "New Book", newbook_path %></a></li>
+                <li><%= link_to "CheckOut History", checkouthistory_path %></a></li>
+        <%
+             end
+
+             if current_user.member?
+        %>
+                <li><%= link_to "CheckOut History", checkouthistory_path %></a></li>
         <%
              end
            end

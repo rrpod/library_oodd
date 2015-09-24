@@ -7,15 +7,23 @@ class UsersController < ApplicationController
     @users = User.where(role: "admin")
   end
 
+  def index_users
+    @user = User.where(role: "member")
+  end
+
   def edit
     @user = User.find(params[:id])
   end
+
   def create
     user = User.find_by_email(params[:user][:email])
     if user
       flash[:warn] = "This email id is already registered"
       redirect_to signup_url
       return
+    end
+    if !current_user
+      params[:user][:role] = "member"
     end
     @user = User.new(user_params)
     if @user.save
@@ -28,10 +36,10 @@ class UsersController < ApplicationController
       redirect_to signup_url
     end
   end
+
   def update
     user_email = params[:user][:email]
     @user = User.find_by_email(current_user.email)
-
     if @user
       if @user.update(user_params)
         flash[:notice] = "profile updated successfully"
@@ -41,19 +49,37 @@ class UsersController < ApplicationController
       redirect_to listadmins_url
     end
   end
+
   def destroy
     @user = User.find(params[:id])
     if @user
       if @user.destroy
-        flash[:notice] = "Admin was deleted successfully"
+        if @user.admin?
+          flash[:notice] = "Admin was deleted successfully"
+        else
+          flash[:notice] = "User was deleted successfully"
+        end
       else
-        flash[:warn] = "Could not delete Admin"
+        if @user.admin?
+          flash[:warn] = "Could not delete Admin"
+        else
+          flash[:warn] = "Could not delete User"
+        end
       end
     else
-      flash[:warn] = "Could not find Admin to delete"
+      if @user.admin?
+        flash[:warn] = "Did not find Admin to delete"
+      else
+        flash[:warn] = "Did not find User to delete"
+      end
     end
-    redirect_to users_url
+    if @user.admin?
+      redirect_to listadmins_url
+    else
+      redirect_to index_users_path
+    end
   end
+
   private
 
   def user_params

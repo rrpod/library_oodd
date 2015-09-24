@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   #validates_confirmation_of :password
   #validates_presence_of :password_confirmation
 
+  ROLE = ['admin']
+
   def member?
     self.role == 'member'
   end

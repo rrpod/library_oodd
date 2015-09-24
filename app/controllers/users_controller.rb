@@ -4,12 +4,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.where(role: "admin")
   end
 
-  def show
-    @user = User.find(params[:id])
-    @books = Book.all
+  def index_users
+    @user = User.where(role: "member")
   end
 
   def create
@@ -18,6 +17,9 @@ class UsersController < ApplicationController
       flash[:warn] = "This email id is already registered"
       redirect_to signup_url
       return
+    end
+    if !current_user
+      params[:user][:role] = "member"
     end
     @user = User.new(user_params)
     if @user.save
@@ -28,25 +30,43 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
-    @user = User.find(params[:id])
-  end
 
   def destroy
     @user = User.find(params[:id])
-    if @user == current_user
-      flash[:warn] = "You can't destroy yourself."
-       else
-    @user.destroy
-    flash[:success] = "User destroyed."
+    if @user
+      if @user.destroy
+        if @user.admin?
+          flash[:notice] = "Admin was deleted successfully"
+        else
+          flash[:notice] = "User was deleted successfully"
+        end
+      else
+        if @user.admin?
+          flash[:warn] = "Could not delete Admin"
+        else
+          flash[:warn] = "Could not delete User"
+        end
 
+      end
+    else
+      if @user.admin?
+        flash[:warn] = "Did not find Admin to delete"
+      else
+        flash[:warn] = "Did not find User to delete"
+      end
     end
-    redirect_to users_url
+    if @user.admin?
+      redirect_to listadmins_url
+    else
+      redirect_to index_users_path
+    end
   end
+
+
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
   end
 end

@@ -7,6 +7,14 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def index_search
+    if params[:search]
+      @book = Book.search(params[:search]).sort
+    else
+      @book = Book.all.order('created_at DESC')
+    end
+  end
+
   def create
     book = Book.find_by_isbn(params[:book][:isbn])
     if book

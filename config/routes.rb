@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :todos
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'library#index'
@@ -10,12 +9,17 @@ Rails.application.routes.draw do
   get 'newbook' => 'books#new'
   post 'newbook' => 'books#create'
   get 'books' => 'books#index'
-  get 'users' => 'users#index'
-  delete 'destory' => 'users#destroy'
-  get 'details' => 'users#show'
+  get 'checkouthistory/:id' => 'checkouthistory#show'
+  get 'checkouthistory' => 'checkouthistory#index'
+  get 'listadmins' => 'users#index'
+  get 'edit_book' => 'books#index'
+  get 'index_search' => 'books#index_search'
+  get 'index_users' => 'users#index_users'
+  get 'delete_user' => 'users#destroy_user'
 
   resources :users
   resources :books
+  resources :checkouthistory
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

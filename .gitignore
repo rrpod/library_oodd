@@ -15,8 +15,11 @@
 /log/*
 !/log/.keep
 /tmp
-/bin/*
-/config/*
-/db/*
-/lib/*
-/vendor/*
+/db
+/bin
+/lib
+/public
+/test
+/vendor
+/.idea/*
+.idea/

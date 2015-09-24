@@ -33,6 +33,7 @@
                   <td style="word-wrap: break-word"><%= book.current_owner %></td>
                   <td style="word-wrap: break-word">
                     <%= link_to 'Edit', edit_book_path(book.isbn) %>
+                    <%= link_to 'View Checkout History', checkouthistory_path(book.isbn) %>
                     <%= link_to 'Delete', book, method: 'delete', data: { confirm: 'Are you sure?'}
                     %>
                   </td>

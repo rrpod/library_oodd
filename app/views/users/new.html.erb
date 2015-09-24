@@ -8,23 +8,34 @@
 <div class="container">
   <div class="card card-container">
     <%= form_for(:user, url: '/users', :html => {:class => "form-signin"}) do |f| %>
-        <%= f.text_field :first_name, :placeholder => 'First Name', :class => "form-control" %>
-          <%= f.text_field :last_name, :placeholder => 'Last Name' , :class => "form-control"%>
-            <%= f.email_field :email, :placeholder => 'Email' , :class => "form-control" %>
-              <%= f.password_field :password, :placeholder => 'Password', :class => "form-control" %>
+
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, :placeholder => 'First Name', :class => "form-control" ,:required=>true%>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, :placeholder => 'Last Name' , :class => "form-control",:required=>true%>
+        <%= f.label :email %>
+        <%= f.email_field :email, :placeholder => 'Email' , :class => "form-control" %>
+        <%= f.label :password %>
+        <%= f.password_field :password,:onkeyup => 'validatePassword()', class: 'form-control',:required=>true %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, :onkeyup => 'validatePassword()', class: 'form-control',:required=>true %>
         <% if current_user && current_user.admin? %>
+            <%= f.label :role %>
             <div class="dropdown">
               <div class="form-group">
 
                 <%= f.collection_select :role, User::ROLE, :to_s, :to_s, :status =>true ,:html => {:class => "form-control"}%>
+                <%= f.submit "Create Admin", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
 
               </div>
             </div>
 
         <% end %>
-
+        <% if !current_user %>
             <%= f.submit "Sign Up", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
-
         <% end %>
+    <% end %>
   </div>
+
 </div>

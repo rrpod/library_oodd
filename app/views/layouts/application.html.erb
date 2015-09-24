@@ -68,9 +68,9 @@ Reference: http://getbootstrap.com/components/#navbar
       </form>
 -->
 
-      <%= form_tag(index_search_path, :method => "get", id: "search-form", :html{:class => 'navbar-form navbar-left'}) do %>
+      <%= form_tag(index_search_path, :method => "get", id: "search-form", class: 'navbar-form navbar-left') do %>
           <%= text_field_tag :search, params[:search], placeholder: "Search Books" %>
-          <%= submit_tag "Search", :name => nil %>
+          <%= submit_tag "Search", :name => nil, :class => 'btn btn-default'  %>
       <% end %>
 
 

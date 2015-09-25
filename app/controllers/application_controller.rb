@@ -14,15 +14,29 @@ class ApplicationController < ActionController::Base
   end
 
   def require_member
-    redirect_to '/' unless current_user.member?
+    if (!current_user || !current_user.member?)
+      flash.now[:warn] = "You need to be logged in to perform that action!"
+    end
+    redirect_to '/login' unless current_user && current_user.member?
   end
 
   def require_admin
-    redirect_to '/' unless current_user.admin?
+    if (current_user && !current_user.admin? || !current_user)
+      flash[:warn] = "You need Admin Rights to Perform that action!"
+    end
+    redirect_to '/' unless current_user && current_user.admin?
   end
 
   def history_book(isbn)
     current_time = Time.now.utc.iso8601
     Checkouthistory.where(isbn: isbn, checkin: nil).update_all(checkin: current_time)
+    puts "done updating!"
+  end
+
+  def link_to(body, url, html_options = {})
+    active = "active" if current_page?(url)
+    content_tag :li, class: active do
+      link_to body, url, html_options
+    end
   end
   end

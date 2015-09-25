@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root 'library#index'
+  root 'books#index'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   #get 'edit_book' => 'books#index'
   get 'index_search' => 'books#index_search'
   get 'index_users' => 'users#index_users'
+  get 'returnBook' => 'checkouthistory#returnBook'
+  get 'checkoutBook' => 'checkouthistory#checkoutBook'
 
   resources :users
   resources :books

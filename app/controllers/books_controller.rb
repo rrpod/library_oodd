@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :require_admin, only: [:new, :create, :edit, :update,:destroy]
+
   def new
     @book = Book.new
   end
@@ -13,22 +15,25 @@ class BooksController < ApplicationController
     else
       @book = Book.all.order('created_at DESC')
     end
+    if !@book || @book.length == 0
+      flash[:warn] = "Could not find anything!"
+    end
   end
 
   def create
     book = Book.find_by_isbn(params[:book][:isbn])
     if book
-      flash[:warn] = "A book is already present with this ISBN"
+      flash.now[:warn] = "A book is already present with this ISBN"
       redirect_to newbook_url
       return
     end
     params[:book][:status] = "available"
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = "Book Successfully added"
+      flash.now[:notice] = "Book Successfully added"
       redirect_to books_url
     else
-      flash[:warn] = "Server faced an internal error. Could not save book"
+      flash.now[:warn] = "Server faced an internal error. Could not save book"
       redirect_to newbook_url
     end
   end
@@ -46,9 +51,9 @@ class BooksController < ApplicationController
       puts "Reached here"
       if @book.update(book_params)
         history_book(book_isbn)
-        flash[:notice] = "Book status updated successfully"
+        flash.now[:notice] = "Book status updated successfully"
       else
-        flash[:warn] = "Could not update Book status"
+        flash.now[:warn] = "Could not update Book status"
       end
       redirect_to books_url
     end
@@ -60,17 +65,24 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    if @book
-      if @book.destroy
-        flash[:notice] = "Book was deleted successfully"
+
+    if @book.status == "available"
+      if @book
+        if @book.destroy
+          flash[:notice] = "Book was deleted successfully"
+        else
+          flash[:warn] = "Could not delete Book"
+        end
       else
-        flash[:warn] = "Could not delete Book"
+        flash[:warn] = "Did not find book to delete"
       end
     else
-      flash[:warn] = "Did not find book to delete"
+      flash[:warn] = "Book has not been returned!"
     end
     redirect_to books_url
   end
+
+
   private
 
   def book_params

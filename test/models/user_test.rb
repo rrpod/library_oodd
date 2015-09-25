@@ -23,7 +23,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not duplicate_user.valid?
   end
   test "password minimum length" do
-    @user.password = @user.password_confirmation = "a" * 7
+    @user.password =  "a" * 7
     assert_not @user.valid?
   end
 

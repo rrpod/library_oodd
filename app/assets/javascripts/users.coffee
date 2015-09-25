@@ -12,7 +12,5 @@ $(document).on 'ready page:load', ->
       password_confirmation.setCustomValidity ''
     else
       password_confirmation.setCustomValidity 'Passwords Don\'t Match'
-    return
-
   password.onchange = validatePassword
   password_confirmation.onkeyup = validatePassword

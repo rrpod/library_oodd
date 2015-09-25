@@ -1,3 +1,9 @@
+<% if current_user
+     if !current_user.admin?
+        controller.redirect_to '/'
+       end
+end %>
+
 <% if flash[:warn] %>
     <div class="alert alert-danger" role="alert">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -16,7 +22,7 @@
         <%= f.label :email %>
         <%= f.email_field :email, :placeholder => 'Email' , :class => "form-control" %>
         <%= f.label :password %>
-        <%= f.password_field :password,:onkeyup => 'validatePassword()', class: 'form-control',:required=>true %>
+        <%= f.password_field :password, class: 'form-control',:required=>true %>
 
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, :onkeyup => 'validatePassword()', class: 'form-control',:required=>true %>

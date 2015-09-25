@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   has_secure_password
-  attr_accessor :password, :password_confirmation
+  #attr_accessor :password, :password_confirmation
   #attr_accessible :username, :email, :password, :password_confirmation
   ROLE = ['admin']
 
-  validates :first_name, presence: true, length: { maximum: 50 }, message: 'First name too long'
-  validates :last_name, presence: true, length: { maximum: 50 }, message: 'Last name too long'
+  validates :first_name, presence: true, length: { maximum: 50 }
+  validates :last_name, presence: true, length: { maximum: 50 }
   before_save { self.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },

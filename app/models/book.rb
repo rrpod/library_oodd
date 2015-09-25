@@ -14,4 +14,9 @@ class Book < ActiveRecord::Base
 
   end
 
+  def checkedout?
+    self.role == 'checkedout'
+  end
+
+
 end

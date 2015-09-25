@@ -7,6 +7,12 @@
   <%= stylesheet_link_tag  'users', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script>
+      $('.nav a').on('click', function() {
+          $('.nav').find('.active').removeClass('active');
+          $(this).parent().addClass('active');
+      });
+  </script>
 </head>
 <body>
 <!--

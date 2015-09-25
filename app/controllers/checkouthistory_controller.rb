@@ -1,5 +1,7 @@
 require 'time'
 class CheckouthistoryController < ApplicationController
+  before_action :require_admin, only: [:show]
+  before_action :require_user, only: [:index]
   def show
     #@book = Book.find(params[:id])
     if current_user && current_user.admin?
@@ -27,7 +29,7 @@ class CheckouthistoryController < ApplicationController
       @book = Checkouthistory.find_by_email(current_user.email)
     end
     if !@books
-      flash[:warn] = "You have never borrowed a book!"
+      flash.now[:warn] = "You have never borrowed a book!"
     end
   end
 
@@ -75,10 +77,12 @@ end
   def index
     search_email = ""
     user = ""
+    key_count = 0
     if current_user && current_user.member?
       search_email = current_user.email
       user = search_email
     else
+
       params.each do |key,value|
         puts key
         puts value
@@ -87,6 +91,7 @@ end
           search_email = search_email["email_id"]
           puts search_email
           puts "MUHAHAHA"
+          key_count = key_count + 1
         end
       end
 
@@ -100,11 +105,13 @@ end
         .where(email: search_email).order('checkout asc')
 
         if @books.length == 0
-           flash[:warn] = "This user has never borrowed a book"
+           flash.now[:warn] = "This user has never borrowed a book"
         end
       end
     else
-      flash[:warn] = "This user does not exist!"
+      if key_count!=0
+        flash.now[:warn] = "This user does not exist!"
+      end
     end
   end
 end

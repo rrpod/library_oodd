@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_admin || :require_member, only: [:update]
+  before_action :require_admin, only: [:destroy]
+
   def new
     @user = User.new
   end
@@ -18,7 +21,7 @@ class UsersController < ApplicationController
   def create
     user = User.find_by_email(params[:user][:email])
     if user
-      flash[:warn] = "This email id is already registered"
+      flash.now[:warn] = "This email id is already registered"
       redirect_to signup_url
       return
     end
@@ -30,8 +33,9 @@ class UsersController < ApplicationController
       if !current_user
         session[:user_id] = @user.id
         redirect_to root_url
-        end
-      redirect_to listadmins_url
+      else
+        redirect_to listadmins_url
+      end
     else
       redirect_to signup_url
     end
@@ -42,9 +46,9 @@ class UsersController < ApplicationController
     @user = User.find_by_email(current_user.email)
     if @user
       if @user.update(user_params)
-        flash[:notice] = "profile updated successfully"
+        flash.now[:notice] = "profile updated successfully"
       else
-        flash[:warn] = "Could not update profile"
+        flash.now[:warn] = "Could not update profile"
       end
       if current_user && current_user.admin?
         redirect_to listadmins_url
@@ -59,22 +63,22 @@ class UsersController < ApplicationController
     if @user
       if @user.destroy
         if @user.admin?
-          flash[:notice] = "Admin was deleted successfully"
+          flash.now[:notice] = "Admin was deleted successfully"
         else
-          flash[:notice] = "User was deleted successfully"
+          flash.now[:notice] = "User was deleted successfully"
         end
       else
         if @user.admin?
-          flash[:warn] = "Could not delete Admin"
+          flash.now[:warn] = "Could not delete Admin"
         else
-          flash[:warn] = "Could not delete User"
+          flash.now[:warn] = "Could not delete User"
         end
       end
     else
       if @user.admin?
-        flash[:warn] = "Did not find Admin to delete"
+        flash.now[:warn] = "Did not find Admin to delete"
       else
-        flash[:warn] = "Did not find User to delete"
+        flash.now[:warn] = "Did not find User to delete"
       end
     end
     if @user.admin?

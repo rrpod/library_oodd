@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url
     else
+      puts "Did not find anything!!"
+      flash[:warn] = "Incorrect User id or password!"
       redirect_to login_url
     end
   end

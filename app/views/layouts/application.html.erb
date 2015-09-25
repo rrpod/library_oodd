@@ -36,20 +36,20 @@ Reference: http://getbootstrap.com/components/#navbar
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
-        <li class="active"><%= link_to "List of Books", books_path %></a></li>
+        <li class="<%= 'active' if current_page?(books_path) %>"><%= link_to "List of Books", books_path %></a></li>
         <% if current_user
         %>
-        <li><%= link_to "CheckOut History", checkouthistory_path %></a></li>
+        <li class="<%= 'active' if current_page?(checkouthistory_path) %>"><%= link_to "CheckOut History", checkouthistory_path %></a></li>
         <%
              if current_user.admin?
         %>
-                <li><%= link_to "New Book", newbook_path %></a></li>
+                <li class="<%= 'active' if current_page?(newbook_path) %>"><%= link_to "New Book", newbook_path %></a></li>
                 <li class="drop down">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage Admins
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "Create New Admin", signup_path %></a></li>
-                    <li><%= link_to "View All Admins", listadmins_path %></a></li>
+                    <li class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Create New Admin", signup_path %></a></li>
+                    <li class="<%= 'active' if current_page?(listadmins_path) %>"><%= link_to "View All Admins", listadmins_path %></a></li>
 
                   </ul>
                 <li class="drop down">
@@ -57,7 +57,7 @@ Reference: http://getbootstrap.com/components/#navbar
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu">
 
-                    <li><%= link_to "View All Users", index_users_path %></a></li>
+                    <li class="<%= 'active' if current_page?(index_users_path) %>"><%= link_to "View All Users", index_users_path %></a></li>
 
                   </ul>
                 </li>
@@ -89,16 +89,16 @@ Reference: http://getbootstrap.com/components/#navbar
               <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%=current_user.email%>
                 <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Edit Profile", edit_user_path(current_user) %></a></li>
+                <li class="<%= 'active' if current_page?(edit_user_path(current_user)) %>"><%= link_to "Edit Profile", edit_user_path(current_user) %></a></li>
 
 
               </ul>
             </li>
-            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            <li ><%= link_to "Log out", logout_path, method: "delete" %></li>
 
         <% else %>
-            <li><%= link_to "Log in", login_path %></a></li>
-            <li><%= link_to "Sign up", signup_path %></a></li>
+            <li class="<%= 'active' if current_page?(login_path) %>"><%= link_to "Log in", login_path %></a></li>
+            <li class="<%= 'active' if current_page?(signup_path) %>"><%= link_to "Sign up", signup_path %></a></li>
         <% end %>
       </ul>
     </div>

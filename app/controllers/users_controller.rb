@@ -43,16 +43,21 @@ class UsersController < ApplicationController
 
   def update
     user_email = params[:user][:email]
+    puts "SDFSDFDFDFF"
     @user = User.find_by_email(current_user.email)
     if @user
+      puts @user
+      puts user_params
       if @user.update(user_params)
-        flash.now[:notice] = "profile updated successfully"
+        flash[:notice] = "profile updated successfully"
       else
-        flash.now[:warn] = "Could not update profile"
+        puts "blashasddf"
+        flash[:warn] = "Could not update profile"
       end
       if current_user && current_user.admin?
         redirect_to listadmins_url
       else
+        puts "!221"
         redirect_to root_url
       end
     end

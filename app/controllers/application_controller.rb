@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_member
+    put "ASDASD"
     if (!current_user || !current_user.member?)
       flash.now[:warn] = "You need to be logged in to perform that action!"
     end
@@ -21,6 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin
+    puts "IAM THE CASYE"
     if (current_user && !current_user.admin? || !current_user)
       flash[:warn] = "You need Admin Rights to Perform that action!"
     end

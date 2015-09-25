@@ -38,8 +38,9 @@ def returnBook
   @book = Book.find_by_isbn(params[:id])
   isbn = params[:id]
   if @book
-      @book.update(status: "available", current_owner: "")
+      @book.update(status: "available", current_owner: nil)
       history_book(isbn)
+      flash[:notice] = "You have succesfully returned the book!"
   else
     flash[:warn] = ("Can't change the status")
   end
@@ -54,6 +55,8 @@ def checkoutBook
   @book = Book.find_by_isbn(params[:id])
   isbn = params[:id]
   email = params[:email]
+  puts "Extracted ISBN" , isbn
+  puts "Extracted email" , email
   if @book
     if @book.update(status: "checkedout", current_owner: email)
       book_details = Hash.new

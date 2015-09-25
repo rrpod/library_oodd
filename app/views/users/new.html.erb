@@ -1,5 +1,7 @@
 <% if current_user
-     controller.redirect_to '/'
+     if !current_user.admin?
+        controller.redirect_to '/'
+   end
 end %>
 
 <% if flash[:warn] %>

@@ -34,11 +34,4 @@ class ApplicationController < ActionController::Base
     Checkouthistory.where(isbn: isbn, checkin: nil).update_all(checkin: current_time)
     puts "done updating!"
   end
-
-  def link_to(body, url, html_options = {})
-    active = "active" if current_page?(url)
-    content_tag :li, class: active do
-      link_to body, url, html_options
-    end
-  end
-  end
+end

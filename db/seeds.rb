@@ -6,7 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 mateo = User.create(first_name: 'Mateo', last_name: 'Lazo', email: 'mateo@email.com', password: 'Mateo1', password_confirmation: 'Mateo1', role: 'admin');
+
 predefinedadmin = User.create(first_name: 'Predefinedadmin', last_name: 'Predefinedadmin', email: 'admin@email.com', password: 'admin123', password_confirmation: 'admin123', role: 'admin');
+anshita = User.create(first_name: 'anshita', last_name: 'sayal', email: 'anshita@email.com', password: 'Mateo1', password_confirmation: 'Mateo1', role: 'member')
+ankita = User.create(first_name: 'ankita', last_name: 'sayal', email: 'ankita@email.com', password: 'Mateo1', password_confirmation: 'Mateo1', role: 'admin')
 testHistory = Checkouthistory.create(isbn: 12, email: 'blah', checkout: '2011-07-28T23:14:04Z')
 rohit = User.create(first_name: 'rohit', last_name: 'p', email: 'rohit@email.com', password: 'Mateo1', password_confirmation: 'Mateo1', role: 'admin')
 anush = User.create(first_name: 'anush', last_name: 'b', email: 'anush@email.com', password: 'Mateo1', password_confirmation: 'Mateo1', role: 'member')
@@ -37,16 +40,21 @@ books_add17 = Book.create(isbn: 30, title: 'Advance level history', author: 'cha
 books_add18 = Book.create(isbn: 31, title: 'Advance level german', author: 'divya jain', description: 'Advance level german', status: 'checked out', current_owner:'divya@email.com')
 books_add19 = Book.create(isbn: 32, title: 'Advance level sanskrit', author: 'prasad gupta', description: 'Advance level sanskrit', status: 'checked out', current_owner:'hardesh@email.com')
 books_add20 = Book.create(isbn: 33, title: 'Advance level hindi', author: 'divya jain, prasad gupta', description: 'Advance level hindi', status: 'checked out', current_owner:'hardesh@email.com')
-testHistory = Checkouthistory.create(isbn: 25, email: 'haris@email.com', checkout: '2015-07-28T23:14:04Z',checkin: '2015-09-28T23:14:04Z')
-testHistory = Checkouthistory.create(isbn: 26, email: 'shruti@email.com', checkout: '2015-07-23T23:14:04Z', checkin: '2015-09-28T23:14:04Z')
+
+testHistory = Checkouthistory.create(isbn: 25, email: 'haris@email.com', checkout: '2015-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 26, email: 'shruti@email.com', checkout: '2015-07-23T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 27, email: 'hafsa@email.com', checkout: '2015-07-8T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 28, email: 'shruti@email.com', checkout: '2015-04-8T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 29, email: 'haris@email.com', checkout: '2014-12-18T23:14:04Z')
-testHistory = Checkouthistory.create(isbn: 30, email: 'hafsa@email.com', checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 30, email: 'hafsa@email.com', checkout: '2015-09-8T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 31, email: 'divya@email.com', checkout: '2015-03-2T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 32, email: 'hardesh@email.com', checkout: '2015-02-05T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 33, email: 'hardesh@email.com', checkout: '2015-01-07T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 25, email: 'haris@email.com', checkout: '2015-08-28T23:14:04Z')
-testHistory = Checkouthistory.create(isbn: 26, email: 'shruti@email.com',checkout: '2015-08-23T23:14:04Z')
-testHistory = Checkouthistory.create(isbn: 30, email: 'hafsa@email.com',checkout: '2015-09-8T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 26, checkout: '2015-08-23T23:14:04Z', checkin: '2015-09-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 30, checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 14, checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
+testHistory = Checkouthistory.create(isbn: 19, checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
+
+
 

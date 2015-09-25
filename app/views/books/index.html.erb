@@ -33,37 +33,52 @@
       </tr>
       </thead>
       <tbody>
-        <% @books.each do |book| %>
-            <tr>
-              <td style="word-wrap: break-word"><%= book.isbn %></td>
-              <td style="word-wrap: break-word"><%= book.title %></td>
-              <td style="word-wrap: break-word"><%= book.author %></td>
-              <td style="word-wrap: break-word"><%= book.description %></td>
-              <td style="word-wrap: break-word"><%= book.status %></td>
-              <% if current_user %>
-                  <% if book.status == "available" %>
-                    <td style="word-wrap: break-word"><%= link_to "Checkout" , :controller => "checkouthistory", :action => "checkoutBook", :id => book.isbn, :email => current_user.email %>
-                    </td>
-                      <% elsif book.current_owner == current_user.email%>
-                      <td style="word-wrap: break-word"><%= link_to "Return" , :controller => "checkouthistory", :action => "returnBook", :id => book.isbn%>
-                      </td>
-                      <%else%>
-                          <td style="word-wrap: break-word">Book not available
-                         </td>
+      <% i = 0
+         @books.each do |book| %>
+          <tr>
+            <td style="word-wrap: break-word"><%= book.isbn %></td>
+            <td style="word-wrap: break-word"><%= book.title %></td>
+            <td style="word-wrap: break-word"><%= book.author %></td>
+            <td style="word-wrap: break-word"><%= book.description %></td>
+            <td style="word-wrap: break-word"><%= book.status %></td>
+            <% if current_user %>
+                <% if book.status == "available" %>
+                    <td style="word-wrap: break-word">
 
-                 <% end %>
-                  <% end %>
-              <% if current_user && current_user.admin? %>
-                  <td style="word-wrap: break-word"><%= book.current_owner %></td>
-                  <td style="word-wrap: break-word">
-                    <%= link_to 'Edit', edit_book_path(book.isbn) %>
-                    <%= link_to 'View Checkout History', :controller => "checkouthistory", :action => "show", :id => book.isbn %>
-                    <%= link_to 'Delete', book, method: 'delete', data: { confirm: 'Are you sure?'}
-                    %>
-                  </td>
-              <%end%>
-            </tr>
-        <% end %>
+                      <%= link_to "Checkout",book , :id => 'user_' + i.to_s, :onclick => "myfunction(#{book.isbn},#{i})" %>
+                    </td>
+                <% elsif book.current_owner == current_user.email || current_user.admin?%>
+                    <td style="word-wrap: break-word"><%= link_to "Return" , :controller => "checkouthistory", :action => "returnBook", :id => book.isbn%>
+                    </td>
+                <%else%>
+                    <td style="word-wrap: break-word">Book not available
+                    </td>
+
+                <% end %>
+            <% end %>
+            <% if current_user && current_user.admin? %>
+                <td style="word-wrap: break-word">
+                  <% string_select_id = 'user_select' + i.to_s%>
+                  <%=
+                      if (book.current_owner)
+                        book.current_owner
+                      else
+                        select(:user, string_select_id, User.all.where(:role => 'member').collect {|u| [u.email, u.id]},{},{:class => 'form-control'})
+
+                      end
+
+                  %>
+                </td>
+                <td style="word-wrap: break-word">
+                  <%= link_to 'Edit | ', edit_book_path(book.isbn) %>
+                  <%= link_to 'View Checkout History | ', :controller => "checkouthistory", :action => "show", :id => book.isbn %>
+                  <%= link_to 'Delete', book, method: 'delete', data: { confirm: 'Are you sure?'}
+                  %>
+                </td>
+            <%end%>
+          </tr>
+      <% i+=1
+         end %>
       </tbody>
     </table>
   </div>

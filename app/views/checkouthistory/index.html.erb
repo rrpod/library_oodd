@@ -32,6 +32,7 @@
           <th>Title</th>
           <th>Checkin Time</th>
           <th>Checkout Time</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -41,7 +42,13 @@
               <td style="word-wrap: break-word"><%= book.title %></td>
               <td style="word-wrap: break-word"><%= book.checkin %></td>
               <td style="word-wrap: break-word"><%= book.checkout %></td>
-            </tr>
+                  <% if book.checkin && book.checkin.length >= 1%>
+                  <td style="word-wrap: break-word"> Already returned</td>
+              <% else %>
+                  <td style="word-wrap: break-word"><%= link_to "Return" , :controller => "checkouthistory", :action => "returnBook", :id => book.isbn%>
+                  </td>
+                  </tr>
+                  <% end %>
         <% end %>
         </tbody>
       </table>

@@ -4,6 +4,15 @@
     </div>
 <% end %>
 
+
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
+
 <div class="container">
   <h2>List of Books</h2>
   <div class="table-responsive">
@@ -15,6 +24,9 @@
         <th>Author</th>
         <th>Description</th>
         <th>Status</th>
+        <% if current_user %>
+            <th>Action</th>
+        <% end %>
         <% if current_user && current_user.admin? %>
             <th>Current Owner</th>
             <th>Edit Details</th>
@@ -29,11 +41,24 @@
               <td style="word-wrap: break-word"><%= book.author %></td>
               <td style="word-wrap: break-word"><%= book.description %></td>
               <td style="word-wrap: break-word"><%= book.status %></td>
+              <% if current_user %>
+                  <% if book.status == "available" %>
+                    <td style="word-wrap: break-word"><%= link_to "Checkout" , :controller => "checkouthistory", :action => "checkoutBook", :id => book.isbn, :email => current_user.email %>
+                    </td>
+                      <% elsif book.current_owner == current_user.email%>
+                      <td style="word-wrap: break-word"><%= link_to "Return" , :controller => "checkouthistory", :action => "returnBook", :id => book.isbn%>
+                      </td>
+                      <%else%>
+                          <td style="word-wrap: break-word">Book not available
+                         </td>
+
+                 <% end %>
+                  <% end %>
               <% if current_user && current_user.admin? %>
                   <td style="word-wrap: break-word"><%= book.current_owner %></td>
                   <td style="word-wrap: break-word">
                     <%= link_to 'Edit', edit_book_path(book.isbn) %>
-                    <%= link_to 'View Checkout History', checkouthistory_path(book.isbn) %>
+                    <%= link_to 'View Checkout History', :controller => "checkouthistory", :action => "show", :id => book.isbn %>
                     <%= link_to 'Delete', book, method: 'delete', data: { confirm: 'Are you sure?'}
                     %>
                   </td>

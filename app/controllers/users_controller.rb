@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
     @user = User.new(user_params)
     if @user.save
-      if !current_user.admin?
+      if !current_user
         session[:user_id] = @user.id
         redirect_to root_url
         end

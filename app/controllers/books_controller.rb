@@ -13,6 +13,9 @@ class BooksController < ApplicationController
     else
       @book = Book.all.order('created_at DESC')
     end
+    if !@book || @book.length == 0
+      flash[:warn] = "Could not find anything!"
+    end
   end
 
   def create
@@ -60,17 +63,23 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    if @book
-      if @book.destroy
-        flash[:notice] = "Book was deleted successfully"
+    if @book.status == "available"
+      if @book
+        if @book.destroy
+          flash[:notice] = "Book was deleted successfully"
+        else
+          flash[:warn] = "Could not delete Book"
+        end
       else
-        flash[:warn] = "Could not delete Book"
+        flash[:warn] = "Did not find book to delete"
       end
     else
-      flash[:warn] = "Did not find book to delete"
+      flash[:warn] = "Book has not been returned!"
     end
     redirect_to books_url
   end
+
+
   private
 
   def book_params

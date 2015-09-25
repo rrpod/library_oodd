@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   #get 'edit_book' => 'books#index'
   get 'index_search' => 'books#index_search'
   get 'index_users' => 'users#index_users'
+  get 'returnBook' => 'checkouthistory#returnBook'
+  get 'checkoutBook' => 'checkouthistory#checkoutBook'
 
   resources :users
   resources :books

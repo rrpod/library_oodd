@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
       if !current_user
         session[:user_id] = @user.id
+
         redirect_to root_url
       else
         flash[:notice] = "User created successfully"

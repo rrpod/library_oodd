@@ -39,7 +39,7 @@ Reference: http://getbootstrap.com/components/#navbar
         <li class="<%= 'active' if current_page?(books_path) %>"><%= link_to "List of Books", books_path %></a></li>
         <% if current_user
         %>
-        <li class="<%= 'active' if current_page?(checkouthistory_path) %>"><%= link_to "CheckOut History", checkouthistory_path %></a></li>
+        <li class="<%= 'active' if current_page?(checkouthistory_path) %>"><%= link_to "User CheckOut History", checkouthistory_path %></a></li>
         <%
              if current_user.admin?
         %>

@@ -34,7 +34,11 @@
       </thead>
       <tbody>
       <% i = 0
-         current_email_user =  current_user.email
+         current_email_user =  nil
+         if( current_user && current_user.email)
+            current_email_user = current_user.email
+         end
+
          @books.each do |book| %>
           <tr>
             <td style="word-wrap: break-word"><%= book.isbn %></td>

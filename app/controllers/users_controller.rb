@@ -65,26 +65,32 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user
-      if @user.destroy
-        if @user.admin?
-          flash[:notice] = "Admin was deleted successfully"
+    email = @user.email
+    @userbook = Checkouthistory.where(checkin: nil, email: email).count()
+    if @userbook == 0
+      if @user
+        if @user.destroy
+          if @user.admin?
+            flash[:notice] = "Admin was deleted successfully"
+          else
+            flash[:notice] = "User was deleted successfully"
+          end
         else
-          flash[:notice] = "User was deleted successfully"
+          if @user.admin?
+            flash[:warn] = "Could not delete Admin"
+          else
+            flash[:warn] = "Could not delete User"
+          end
         end
       else
         if @user.admin?
-          flash[:warn] = "Could not delete Admin"
+          flash[:warn] = "Did not find Admin to delete"
         else
-          flash[:warn] = "Could not delete User"
+          flash[:warn] = "Did not find User to delete"
         end
       end
     else
-      if @user.admin?
-        flash[:warn] = "Did not find Admin to delete"
-      else
-        flash[:warn] = "Did not find User to delete"
-      end
+      flash[:warn] = "User has a book to return!"
     end
     if @user.admin?
       redirect_to listadmins_url

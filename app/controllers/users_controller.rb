@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def create
     user = User.find_by_email(params[:user][:email])
     if user
-      flash.now[:warn] = "This email id is already registered"
+      flash[:warn] = "This email id is already registered"
       redirect_to signup_url
       return
     end
@@ -68,22 +68,22 @@ class UsersController < ApplicationController
     if @user
       if @user.destroy
         if @user.admin?
-          flash.now[:notice] = "Admin was deleted successfully"
+          flash[:notice] = "Admin was deleted successfully"
         else
-          flash.now[:notice] = "User was deleted successfully"
+          flash[:notice] = "User was deleted successfully"
         end
       else
         if @user.admin?
-          flash.now[:warn] = "Could not delete Admin"
+          flash[:warn] = "Could not delete Admin"
         else
-          flash.now[:warn] = "Could not delete User"
+          flash[:warn] = "Could not delete User"
         end
       end
     else
       if @user.admin?
-        flash.now[:warn] = "Did not find Admin to delete"
+        flash[:warn] = "Did not find Admin to delete"
       else
-        flash.now[:warn] = "Did not find User to delete"
+        flash[:warn] = "Did not find User to delete"
       end
     end
     if @user.admin?

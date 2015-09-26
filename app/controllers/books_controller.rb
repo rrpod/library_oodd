@@ -23,17 +23,17 @@ class BooksController < ApplicationController
   def create
     book = Book.find_by_isbn(params[:book][:isbn])
     if book
-      flash.now[:warn] = "A book is already present with this ISBN"
+      flash[:warn] = "A book is already present with this ISBN"
       redirect_to newbook_url
       return
     end
     params[:book][:status] = "available"
     @book = Book.new(book_params)
     if @book.save
-      flash.now[:notice] = "Book Successfully added"
+      flash[:notice] = "Book Successfully added"
       redirect_to books_url
     else
-      flash.now[:warn] = "Server faced an internal error. Could not save book"
+      flash[:warn] = "Server faced an internal error. Could not save book"
       redirect_to newbook_url
     end
   end
@@ -51,9 +51,9 @@ class BooksController < ApplicationController
       puts "Reached here"
       if @book.update(book_params)
         history_book(book_isbn)
-        flash.now[:notice] = "Book status updated successfully"
+        flash[:notice] = "Book status updated successfully"
       else
-        flash.now[:warn] = "Could not update Book status"
+        flash[:warn] = "Could not update Book status"
       end
       redirect_to books_url
     end

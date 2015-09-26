@@ -16,15 +16,10 @@
   <div class="card card-container">
     <div class="form-group">
         <%= form_for(@book, :html => {:class => "form-signin"}) do |f| %>
-            <%= f.text_field :isbn , :placeholder => 'ISBN', :class => "form-control", :readonly => true %>
-            <%= f.text_field :title, :placeholder => 'Title' , :class => "form-control"%>
-            <%= f.text_field :author, :placeholder => 'Author' , :class => "form-control" %>
-            <%= f.text_area :description, :placeholder => 'Description', :class => "form-control" %>
-            <div class="dropdown">
-              <div class="form-group">
-                <%= f.collection_select :status, Book::STATUS, :to_s, :to_s ,:html => {:selected =>@book.status,:class => "form-control"}%>
-              </div>
-            </div>
+          <%= f.label :isbn %><%= f.text_field :isbn , :placeholder => 'ISBN', :class => "form-control", :readonly => true %>
+          <%= f.label :title%><%= f.text_field :title, :placeholder => 'Title' , :class => "form-control"%>
+          <%= f.label :author %><%= f.text_field :author, :placeholder => 'Author' , :class => "form-control" %>
+          <%= f.label :description %><%= f.text_area :description, :placeholder => 'Description', :class => "form-control" %>
             <%= f.submit "Update Book", :class => "btn btn-lg btn-primary btn-block btn-signin" %>
         <% end %>
     </div>

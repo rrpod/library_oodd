@@ -29,14 +29,18 @@ class UsersController < ApplicationController
       params[:user][:role] = "member"
     end
     @user = User.new(user_params)
+
     if @user.save
+
       if !current_user
         session[:user_id] = @user.id
         redirect_to root_url
       else
+        flash[:notice] = "User created successfully"
         redirect_to listadmins_url
       end
     else
+      flash[:warn] = "User could not be created. Please check the conditions for each field while creating new user."
       redirect_to signup_url
     end
   end
@@ -52,7 +56,7 @@ class UsersController < ApplicationController
         flash[:notice] = "profile updated successfully"
       else
         puts "blashasddf"
-        flash[:warn] = "Could not update profile"
+        flash[:warn] = "Could not update profile. Please check the conditions for each field while updating the user."
       end
       if current_user && current_user.admin?
         redirect_to listadmins_url

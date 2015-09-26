@@ -15,19 +15,19 @@
 * The user is also able to search for books based on ISBN or title or author or description or status and just view the book details.
 * Login button is provided where user has to enter email ID and password to login to the application.
 * Sign Up button is provided which asks for user's First Name(maximum length 50), Last Name(maximum length 50), email ID, Password(Minimum length 6) and Password Confirmation(Minimum length 6).
-	** If any of the above field length requirements are violated and 'Sign Up' button is clicked, the system does not add the user to the system.
-	** Otherwise, on clicking on 'Sign Up' the user gets added to the system as a member.
+	* If any of the above field length requirements are violated and 'Sign Up' button is clicked, the system does not add the user to the system.
+	* Otherwise, on clicking on 'Sign Up' the user gets added to the system as a member.
 
 **Login as ADMIN:**
 
 * Edit her/his profile details: On successful login, Edit profile option is available in the drop down on clicking on the email ID displayed in the top right portion of the screen.
-	** A form is displayed with First Name(maximum length 50), Last Name(maximum length 50), email ID(Not editable), Password(Minimum length 6) and Password Confirmation(Minimum length 6).
-	** If any of the above field length requirements are violated and 'Update Profile' button is clicked, the system throws an error 'could not update profile' and new admin is not created.
+	* A form is displayed with First Name(maximum length 50), Last Name(maximum length 50), email ID(Not editable), Password(Minimum length 6) and Password Confirmation(Minimum length 6).
+	* If any of the above field length requirements are violated and 'Update Profile' button is clicked, the system throws an error 'could not update profile' and new admin is not created.
 
 Manage admins
 * Create new admins: This functionality is available in the 'Manage Admins' drop down list as 'Create New Admin' list item.
-	** A form is displayed with First Name(maximum length 50), Last Name(maximum length 50), email ID(Not editable), Password(Minimum length 6) and Password Confirmation(Minimum length 6).
-	** If any of the above field length requirements are violated and 'Create Admin' button is clicked, the system throws an error 'could not update profile' and new admin is not created.
+	* A form is displayed with First Name(maximum length 50), Last Name(maximum length 50), email ID(Not editable), Password(Minimum length 6) and Password Confirmation(Minimum length 6).
+	* If any of the above field length requirements are violated and 'Create Admin' button is clicked, the system throws an error 'could not update profile' and new admin is not created.
 * View the list of all the admins and their profile details (except password) : Click on Manage Admins > View All Admins
 * Delete admins (except herself/himself and the pre-configured Admin) : Click on Manage Admins > View All Admins >Delete option in last table column
 
@@ -37,11 +37,11 @@ Manage books :
 * View the details of a book: Click on 'List of Books' button on top portion of the screen shows the details of books.
 * Edit the details of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has Edit button.
 * Admin can also change the status of a book on behalf of user: Steps:
-	** Click on 'List of Books' button on top portion of the screen>
-	** If book is available admin is given a drop down list of all member email ids >
-	** Select specific email ID to checkout the book for > Click on 'Checkout' Button>
-	** Dialog box pops up asking for confirmation Yes/No >
-	** If Yes is clicked the book is checked out to the selected user.
+	* Click on 'List of Books' button on top portion of the screen>
+	* If book is available admin is given a drop down list of all member email ids >
+	* Select specific email ID to checkout the book for > Click on 'Checkout' Button>
+	* Dialog box pops up asking for confirmation Yes/No >
+	* If Yes is clicked the book is checked out to the selected user.
 * View the checkout history of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has 'View Checkout History' button.
 * Delete a book from the system: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has 'Delete' button.
 
@@ -72,4 +72,5 @@ Manage Library Members
 * First Name/Last Name field length cannot be greater than 50 : Updating member/admin is not allowed by the system. Error displayed "Could not update profile. Please check the conditions for each field while updating the user."
 * Password length cannot be less than 6 : Creating user/admin is not allowed by the system. Error displayed "User could not be created. Please check the conditions for each field while creating new user."
 * Password length cannot be less than 6 : Updating user/admin is not allowed by the system. Error displayed "Could not update profile. Please check the conditions for each field while updating the user."
+* Admin can delete a user not holding any book : System preserves the checkout history of the member.
 

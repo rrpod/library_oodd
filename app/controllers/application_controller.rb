@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def require_member
     put "ASDASD"
     if (!current_user || !current_user.member?)
-      flash.now[:warn] = "You need to be logged in to perform that action!"
+      flash[:warn] = "You need to be logged in to perform that action!"
     end
     redirect_to '/login' unless current_user && current_user.member?
   end

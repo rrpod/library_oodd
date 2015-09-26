@@ -29,7 +29,7 @@ class CheckouthistoryController < ApplicationController
       @book = Checkouthistory.find_by_email(current_user.email)
     end
     if !@books
-      flash.now[:warn] = "You have never borrowed a book!"
+      flash[:warn] = "You have never borrowed a book!"
     end
   end
 
@@ -108,12 +108,12 @@ end
         .where(email: search_email).order('checkout asc')
 
         if @books.length == 0
-           flash.now[:warn] = "This user has never borrowed a book"
+           flash[:warn] = "This user has never borrowed a book"
         end
       end
     else
       if key_count!=0
-        flash.now[:warn] = "This user does not exist!"
+        flash[:warn] = "This user does not exist!"
       end
     end
   end

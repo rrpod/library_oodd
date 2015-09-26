@@ -34,6 +34,11 @@
       </thead>
       <tbody>
       <% i = 0
+         current_email_user =  nil
+         if( current_user && current_user.email)
+            current_email_user = current_user.email
+         end
+
          @books.each do |book| %>
           <tr>
             <td style="word-wrap: break-word"><%= book.isbn %></td>
@@ -45,7 +50,7 @@
                 <% if book.status == "available" %>
                     <td style="word-wrap: break-word">
 
-                      <%= link_to "Checkout",book , :id => 'user_' + i.to_s, :onclick => "myfunction(#{book.isbn},#{i})" %>
+                      <%= link_to "Checkout",book , :id => 'user_' + i.to_s, :onclick => "myfunction(#{book.isbn},#{i},#{current_email_user})" %>
                     </td>
                 <% elsif book.current_owner == current_user.email || current_user.admin?%>
                     <td style="word-wrap: break-word"><%= link_to "Return" , :controller => "checkouthistory", :action => "returnBook", :id => book.isbn%>

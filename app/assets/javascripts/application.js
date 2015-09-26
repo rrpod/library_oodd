@@ -32,12 +32,21 @@ $(document).on('page:load', function() {
     }
 });
 
-function myfunction(isbn, index) {
+function myfunction(isbn, index, current_email) {
     //alert(11);
     var email_selected = document.getElementById('user_user_select' + index);
-    var email = email_selected.options[email_selected.selectedIndex].textContent;
-    var r = confirm('Are you sure that you want to checkout book for the user: ' + email);
+    var email, r;
+    if (email_selected !== null) {
+        email = email_selected.options[email_selected.selectedIndex].textContent;
+        r = confirm('Are you sure that you want to checkout book for the user: ' + email);
+    }
+    else {
+        r = confirm('Are you sure that you want to checkout the book?');
+    }
     if (r == true) {
+        if (email === undefined) {
+            email = current_email;
+        }
         window.location.replace('/checkoutBook?email=' + email + '&id='+isbn);
     }
     else {
@@ -49,7 +58,7 @@ $('#user_1').click(function (event) {
     //alert('Hooray!');
     //event.preventDefault(); // Prevent link from following its href
     var email_selected = document.getElementById('user_' + 1);
-    var email = str[str.selectedIndex].value;
+    var email = str[str .selectedIndex].value;
     var r = confirm('Are you sure that you want to checkout book for the user' + email);
     if (r == true) {
 

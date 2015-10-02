@@ -61,10 +61,10 @@ Manage Library Members
 * Return her/his checked out book: Click on List of Books > Action column of the table > Return Button for books whose status is checked out
 * View own checkout history: Click on 'Checkout History' button on the top portion of the screen.
 
-**Edge Case Scenarios**
+**Special Test Cases**
 
-* Admin tries to delete a book which is checkout by any library member : system gives an error message "Error! Could not checkout book"
-* Admin tries to delete a memeber who has a book checked out : system gives an error "User has a book to return!"
+* Admin tries to delete a book which is checkout by any library member : system gives an error message "Book has not been returned"
+* Admin tries to delete a member who has a book checked out : system gives an error "Cannot Delete. User has a book to return!"
 * Admin cannot delete itself : The table shows 'Delete Not Applicable'
 * Admin cannot delete pre-configured admin : The table shows 'Delete Not Applicable'
 * First Name/Last Name field length cannot be greater than 50 : Creating member/admin is not allowed by the system. Error displayed "User could not be created. Please check the conditions for each field while creating new user."
@@ -72,5 +72,10 @@ Manage Library Members
 * First Name/Last Name field length cannot be greater than 50 : Updating member/admin is not allowed by the system. Error displayed "Could not update profile. Please check the conditions for each field while updating the user."
 * Password length cannot be less than 6 : Creating user/admin is not allowed by the system. Error displayed "User could not be created. Please check the conditions for each field while creating new user."
 * Password length cannot be less than 6 : Updating user/admin is not allowed by the system. Error displayed "Could not update profile. Please check the conditions for each field while updating the user."
-* Admin can delete a user not holding any book : System preserves the checkout history of the member.
+* Admin deletes a user not holding any book : System maintains the checkout history of the member for the book.
+* Admin deleted a book not checked out by a user : System maintains the checkout history of the book for the member.
+
+
+
+
 

@@ -1,16 +1,17 @@
 #LibSys : Library Management System
+
 * Team member : Rohit Poduval(rrpoduva), Anshita Sayal(asayal), Anush Bonam(abonam)
 
 * Project URL: http://whispering-lowlands-4535.herokuapp.com
 
-** Preconfigured Admin Credentials:**
+**Preconfigured Admin Credentials:**
 
 * First Name : Predefinedadmin
 * Last Name : Predefinedadmin
 * Email : admin@email.com
 * Password : admin123
 
-** Without Logging In** : The root URL of the application shows the list of books in the system by default and has the following contents:
+**Without Logging In** : The root URL of the application shows the list of books in the system by default and has the following contents:
 
 * On clicking on the, List of Books button, in the top portion of the screen, shows the list of books.
 * The user is also able to search for books based on ISBN or title or author or description or status and just view the book details.

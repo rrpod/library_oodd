@@ -39,11 +39,11 @@ Manage books :
 * View the details of a book: Click on 'List of Books' button on top portion of the screen shows the details of books.
 * Edit the details of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has Edit button.
 * Admin can also change the status of a book on behalf of user: Steps:
-	* Click on 'List of Books' button on top portion of the screen>
-	* If book is available admin is given a drop down list of all member email ids >
-	* Select specific email ID to checkout the book for > Click on 'Checkout' Button>
-	* Dialog box pops up asking for confirmation Yes/No >
-	* If Yes is clicked the book is checked out to the selected user.
+	* Click on 'List of Books' button on top portion of the screen
+	* If book is available admin is given a drop down list of all member email ids
+	* Select specific email ID to checkout the book for > Click on 'Checkout' Button
+	* Dialog box pops up asking for confirmation Yes/No 
+	* If Yes is clicked the book is checked out to the selected user
 * View the checkout history of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has 'View Checkout History' button.
 * Delete a book from the system: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has 'Delete' button.
 

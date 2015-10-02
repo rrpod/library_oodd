@@ -57,8 +57,8 @@ Manage Library Members
 	If any of the above field length requirements are violated and 'Update Profile' button is clicked, the system throws an error 'could not update profile' and new admin is not created.
 * Search books using ISBN or title or author or description or status: Search box is on the top portion of the screen.
 * View the details of a book: When user logs in book details are populated by default. They can also be searched in the search box.
-* Check out a book if its status is ‘Available': Click on List of Books > Action column of the table > Checkout Button
-* Return her/his checked out book: Click on List of Books > Action column of the table > Return Button for books whose status is checked out
+* Check out a book if its status is ‘Available': Click on List of Books > Action column of the table > Checkout Button > User still remains on the List of Books page > Return option becomes available
+* Return her/his checked out book: Click on List of Books > Action column of the table > Return Button for books whose status is checked out> User is redirected to Checkout History of User page and the details of returned book are visible in the history.
 * View own checkout history: Click on 'Checkout History' button on the top portion of the screen.
 
 **Special Test Cases**

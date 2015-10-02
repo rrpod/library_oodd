@@ -95,7 +95,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      flash[:warn] = "User has a book to return!"
+      flash[:warn] = "Cannot Delete. User has a book to return!"
     end
     if @user.admin?
       redirect_to listadmins_url

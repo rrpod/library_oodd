@@ -4,6 +4,14 @@
     </div>
 <% end %>
 
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
+
 <div class="container">
   <h2>List of Users</h2>
   <div class="table-responsive">

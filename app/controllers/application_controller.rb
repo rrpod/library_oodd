@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def history_book(isbn)
-    current_time = Time.now.utc.iso8601
+    current_time = Time.utc.localtime.iso8601
     Checkouthistory.where(isbn: isbn, checkin: nil).update_all(checkin: current_time)
     puts "done updating!"
   end

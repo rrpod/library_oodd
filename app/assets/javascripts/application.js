@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap-sprockets
 //= require_tree .
+//= require footable.core
 
 $('.nav a').on('click', function() {
     $('.nav').find('.active').removeClass('active');
@@ -22,6 +23,7 @@ $('.nav a').on('click', function() {
 });
 $(document).on('page:load', function() {
     // your stuff here
+    $("table").footable();
     $('#my-link').click(function (event) {
         alert('Hooray!');
         event.preventDefault(); // Prevent link from following its href
@@ -66,4 +68,13 @@ $('#user_1').click(function (event) {
     else {
         console.log("declined");
     }
+});
+
+$(document).ready(function () {
+    $('.footable').footable();
+    $("table").footable();
+    for(var i = 0; i< 100; i++) {
+       // document.getElementById('user_' +i).removeAttribute("href");
+    }
+    console.log(i);
 });

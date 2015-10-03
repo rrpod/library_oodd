@@ -34,4 +34,15 @@ class ApplicationController < ActionController::Base
     Checkouthistory.where(isbn: isbn, checkin: nil).update_all(checkin: current_time)
     puts "done updating!"
   end
+
+  def notify_people(isbn)
+    @current_email_list = Notification.find_by_isbn(isbn)
+    if @current_email_list != nil
+      @current_email_list = JSON.parse(@current_email_list["emailList"])
+      @current_email_list.each do |item|
+        puts item
+        notify_user(item)
+      end
+    end
+  end
 end

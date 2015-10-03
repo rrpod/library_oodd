@@ -40,6 +40,7 @@ def returnBook
   if @book
       @book.update(status: "available", current_owner: nil)
       history_book(isbn)
+      notify_people(isbn)
       flash[:notice] = "You have succesfully returned the book!"
   else
     flash[:warn] = ("Can't change the status")

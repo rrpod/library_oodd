@@ -46,4 +46,7 @@
       <primary-key columns="id"/>
     </table>
   </data-source>
+  <data-source name="SQLite -" uuid="3fc9cad5-fcea-4e23-b797-2dd41bd12b99">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>

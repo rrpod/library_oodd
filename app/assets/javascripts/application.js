@@ -56,6 +56,10 @@ function myfunction(isbn, index, current_email) {
     }
 }
 
+function setEmail(isbn, current_email) {
+    window.location.replace('/setEmail?email=' + current_email + '&id='+isbn);
+}
+
 $('#user_1').click(function (event) {
     //alert('Hooray!');
     //event.preventDefault(); // Prevent link from following its href

@@ -30,6 +30,9 @@
             <th>Current Owner</th>
             <th>Edit Details</th>
         <%end%>
+        <% if current_user && current_user.member? %>
+            Notification
+        <% end %>
       </tr>
       </thead>
       <tbody>
@@ -84,6 +87,11 @@
                   %>
                 </td>
             <%end%>
+            <td style="word-wrap: break-word">
+            <%  if current_user && current_user.member? && book.status != "available" %>
+                <a href='javascript:;', id="<%= 'user_' + i.to_s %>", onclick = '<%=  "setEmail(#{book.isbn},\"#{current_email_user}\")".html_safe %>' > Notify Me! </a>
+            <% end %>
+              </td>
           </tr>
       <% i+=1
          end %>

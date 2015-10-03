@@ -55,6 +55,3 @@ testHistory = Checkouthistory.create(isbn: 26, checkout: '2015-08-23T23:14:04Z',
 testHistory = Checkouthistory.create(isbn: 30, checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 14, checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
 testHistory = Checkouthistory.create(isbn: 19, checkout: '2015-09-8T23:14:04Z', checkin: '2015-07-28T23:14:04Z')
-
-
-

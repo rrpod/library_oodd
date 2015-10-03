@@ -45,11 +45,16 @@ class ApplicationController < ActionController::Base
       @current_email_list = JSON.parse(@current_email_list["emailList"])
       puts "Done something"
       puts @current_email_list
+      @current_book = Book.find_by_isbn(isbn)
+      book_name = @current_book["title"]
+      puts "Book name is: "
+      puts book_name
       @current_email_list.each do |item|
         puts item
-        ApplicationMailer.notify_user(item).deliver_now
+        ApplicationMailer.notify_user(item,book_name).deliver_now
         puts "Done sending.."
       end
+      Notification.find_by_isbn(isbn).destroy
       puts "This is over"
     end
   end

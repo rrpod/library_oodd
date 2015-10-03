@@ -87,4 +87,5 @@ Rails.application.configure do
       :authentication => :plain,
   }
 
+  config.action_mailer.raise_delivery_errors = true
 end

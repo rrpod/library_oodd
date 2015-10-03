@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
       @current_email_list.each do |item|
         puts item
         ApplicationMailer.notify_user(item).deliver_later
+        puts "Done sending.."
       end
       puts "This is over"
     end

@@ -5,5 +5,6 @@ class ApplicationMailer < ActionMailer::Base
     puts "Going to send email!! to"
     puts user
     mail(to: user, subject: "Welcome!")
+    return
   end
 end

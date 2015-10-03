@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
       puts @current_email_list
       @current_email_list.each do |item|
         puts item
-        notify_user(item)
+        ApplicationMailer.create_notify_user(item)
       end
       puts "This is over"
     end

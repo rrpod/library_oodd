@@ -1,15 +1,17 @@
 #LibSys : Library Management System
+
 * Team member : Rohit Poduval(rrpoduva), Anshita Sayal(asayal), Anush Bonam(abonam)
 
 * Project URL: http://whispering-lowlands-4535.herokuapp.com
-** Preconfigured Admin Credentials:**
+
+**Preconfigured Admin Credentials:**
 
 * First Name : Predefinedadmin
 * Last Name : Predefinedadmin
 * Email : admin@email.com
 * Password : admin123
 
-** Without Logging In** : The root URL of the application shows the list of books in the system by default and has the following contents:
+**Without Logging In** : The root URL of the application shows the list of books in the system by default and has the following contents:
 
 * On clicking on the, List of Books button, in the top portion of the screen, shows the list of books.
 * The user is also able to search for books based on ISBN or title or author or description or status and just view the book details.
@@ -37,11 +39,11 @@ Manage books :
 * View the details of a book: Click on 'List of Books' button on top portion of the screen shows the details of books.
 * Edit the details of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has Edit button.
 * Admin can also change the status of a book on behalf of user: Steps:
-	* Click on 'List of Books' button on top portion of the screen>
-	* If book is available admin is given a drop down list of all member email ids >
-	* Select specific email ID to checkout the book for > Click on 'Checkout' Button>
-	* Dialog box pops up asking for confirmation Yes/No >
-	* If Yes is clicked the book is checked out to the selected user.
+	* Click on 'List of Books' button on top portion of the screen
+	* If book is available admin is given a drop down list of all member email ids
+	* Select specific email ID to checkout the book for > Click on 'Checkout' Button
+	* Dialog box pops up asking for confirmation Yes/No 
+	* If Yes is clicked the book is checked out to the selected user
 * View the checkout history of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has 'View Checkout History' button.
 * Delete a book from the system: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has 'Delete' button.
 
@@ -57,8 +59,8 @@ Manage Library Members
 	If any of the above field length requirements are violated and 'Update Profile' button is clicked, the system throws an error 'could not update profile' and new admin is not created.
 * Search books using ISBN or title or author or description or status: Search box is on the top portion of the screen.
 * View the details of a book: When user logs in book details are populated by default. They can also be searched in the search box.
-* Check out a book if its status is ‘Available': Click on List of Books > Action column of the table > Checkout Button
-* Return her/his checked out book: Click on List of Books > Action column of the table > Return Button for books whose status is checked out
+* Check out a book if its status is ‘Available': Click on List of Books > Action column of the table > Checkout Button > User still remains on the List of Books page > Return option becomes available
+* Return her/his checked out book: Click on List of Books > Action column of the table > Return Button for books whose status is checked out> User is redirected to Checkout History of User page and the details of returned book are visible in the history.
 * View own checkout history: Click on 'Checkout History' button on the top portion of the screen.
 
 **Special Test Cases**

@@ -41,6 +41,6 @@ class NotificationController < ApplicationController
     else
       flash[:warn] = "An internal error occurred"
     end
-
+    redirect_to root_path
   end
 end

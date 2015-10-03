@@ -31,7 +31,7 @@
             <th>Edit Details</th>
         <%end%>
         <% if current_user && current_user.member? %>
-            Notification
+            <th>Notification</th>
         <% end %>
       </tr>
       </thead>
@@ -88,7 +88,7 @@
                 </td>
             <%end%>
             <td style="word-wrap: break-word">
-            <%  if current_user && current_user.member? && book.status != "available" %>
+            <%  if current_user && current_user.member? && book.status != "available" && book.current_owner != current_user.email %>
                 <a href='javascript:;', id="<%= 'user_' + i.to_s %>", onclick = '<%=  "setEmail(#{book.isbn},\"#{current_email_user}\")".html_safe %>' > Notify Me! </a>
             <% end %>
               </td>

@@ -39,11 +39,11 @@ def returnBook
   isbn = params[:id]
   if @book
       @book.update(status: "available", current_owner: nil)
-      puts "calling history"
+      #puts "calling history"
       history_book(isbn)
-      puts "done history .now notify"
+      #puts "done history .now notify"
       notify_people(isbn)
-      puts "done notify"
+      #puts "done notify"
       flash[:notice] = "You have succesfully returned the book!"
   else
     flash[:warn] = ("Can't change the status")

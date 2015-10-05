@@ -1,0 +1,48 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+<% if flash[:warn] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      <%= flash[:warn] %>
+    </div>
+<% end %>
+
+
+    <div class="container">
+      <h2>List of Book suggestions</h2>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Description</th>
+            <% if current_user && current_user.admin? %>
+                <th>Action</th>
+            <%end%>
+          </tr>
+          </thead>
+          <tbody>
+          <% @suggest.each do |suggest| %>
+              <tr>
+                <td style="word-wrap: break-word"><%= suggest.isbn %></td>
+                <td style="word-wrap: break-word"><%= suggest.title %></td>
+                <td style="word-wrap: break-word"><%= suggest.author %></td>
+                <td style="word-wrap: break-word"><%= suggest.description %></td>
+                <% if current_user && current_user.admin? %>
+                   <td style="word-wrap: break-word">
+                   <%= link_to 'Accept|  ', suggest, controller: 'SuggestBook', action: 'edit' %>
+                   <%= link_to ' Discard ', suggest, method: 'delete', data: { confirm: 'Are you sure?'}%>
+                    </td>
+                <%end%>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>

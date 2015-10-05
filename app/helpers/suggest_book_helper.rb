@@ -1,0 +1,2 @@
+module SuggestBookHelper
+end

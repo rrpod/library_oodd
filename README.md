@@ -77,6 +77,7 @@ Manage Library Members
 * Admin deletes a user not holding any book : System maintains the checkout history of the member for the book.
 * Admin deleted a book not checked out by a user : System maintains the checkout history of the book for the member.
 
+**Extra Credit Functionality**
 
 
 

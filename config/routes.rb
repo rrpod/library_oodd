@@ -18,9 +18,18 @@ Rails.application.routes.draw do
   get 'returnBook' => 'checkouthistory#returnBook'
   get 'checkoutBook' => 'checkouthistory#checkoutBook'
   get 'setEmail' => 'notification#setEmail'
+  get 'suggest' => 'suggest_book#new'
+  post 'suggest' => 'suggest_book#create'
+  get 'index_suggest' => 'suggest_book#index'
+  delete 'delete' => 'suggest_book#destroy'
+  post 'show' => 'suggest_book#show'
+  get 'edit_suggest' => 'suggest_book#edit'
+
+  resources :suggest_book
   resources :users
   resources :books
   resources :checkouthistory
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

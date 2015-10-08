@@ -34,7 +34,7 @@ Manage admins
 * Delete admins (except herself/himself and the pre-configured Admin) : Click on Manage Admins > View All Admins >Delete option in last table column
 
 Manage books :
-* Add a book to the system: Click on 'New Book' button on top portion of the screen
+* Add a book to the system: Click on 'New Book' button on top portion of the screen. Be sure to add a unique ISBN number.
 * View the list of all the books: Click on 'List of Books' button on top portion of the screen
 * View the details of a book: Click on 'List of Books' button on top portion of the screen shows the details of books.
 * Edit the details of a book: Click on 'List of Books' button on top portion of the screen shows a table in which the last column has Edit button.

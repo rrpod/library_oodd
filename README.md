@@ -78,6 +78,7 @@ Manage Library Members
 * Admin deleted a book not checked out by a user : System maintains the checkout history of the book for the member.
 
 **Extra Credit Functionality**
+* Suggest a book: The “Suggest Book” dropdown is provided for a library member on the top of the page. A library member can suggest a book with ISBN, Title, Author and Description fields. All suggestions can be viewed only by an admin, through the dropdown “Book Suggestions” on the top of the page. An admin can accept or decline the suggestions through the links provided for each and also can edit the book details from the “Update” link provided for each book in the “List of Books”.
 
 
 

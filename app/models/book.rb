@@ -10,7 +10,7 @@ class Book < ActiveRecord::Base
 
   def self.search(query)
 
-    where(['title LIKE ? OR isbn LIKE ? or status like ? or author like ? or description like ?', "%#{query}%", "%#{query}%","%#{query}%","%#{query}%","%#{query}%"])
+    where(['title LIKE ? OR isbn ILIKE ? or status ILIKE ? or author ILIKE ? or description ILIKE ?', "%#{query}%", "%#{query}%","%#{query}%","%#{query}%","%#{query}%"])
 
   end
 

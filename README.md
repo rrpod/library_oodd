@@ -79,6 +79,8 @@ Manage Library Members
 
 **Extra Credit Functionality**
 * Suggest a book: The “Suggest Book” dropdown is provided for a library member on the top of the page. A library member can suggest a book with ISBN, Title, Author and Description fields. All suggestions can be viewed only by an admin, through the dropdown “Book Suggestions” on the top of the page. An admin can accept or decline the suggestions through the links provided for each and also can edit the book details from the “Update” link provided for each book in the “List of Books”.
+* Notify when book is available: In the List of Books page, the user can view a Link called Notify Me! if a particular book is not available. On clicking it, the user will be notified by email as soon as the book is available. (Please use a valid email Id to test this feature).
+
 
 
 

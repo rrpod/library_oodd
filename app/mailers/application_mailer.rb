@@ -5,7 +5,7 @@ class ApplicationMailer < ActionMailer::Base
 
     @book = book_name
     mail(to: user, subject: "The book You were looking for is available!")
-    
+
     return
   end
 end
